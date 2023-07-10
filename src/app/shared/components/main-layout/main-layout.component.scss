@@ -35,9 +35,9 @@ span {
   background: var(--tui-base-01);
   border-right: 1px solid var(--tui-base-03);
   overflow-x: hidden;
-  padding-top: 30px;
+  padding-top: 35px;
   margin-top: 64px;
-  font: var(--tui-font-text-l);
+  font: var(--tui-font-heading-6);
 }
 
 .sidenav a {
@@ -48,6 +48,7 @@ span {
 
 
 .router-wrapper {
+  margin-top: 64px;
   margin-left: 260px;
 }
 

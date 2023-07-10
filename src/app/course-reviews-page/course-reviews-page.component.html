@@ -1,1 +1,97 @@
-<p>course-reviews-page works!</p>
+<div class="wrapper">
+  <h1>Отзывы</h1>
+  <tui-tabs [(activeItemIndex)]="activeItemIndex">
+    <button
+        tuiTab
+        (click)="onClick('courses')"
+    >
+      На курсы
+    </button>
+    <button
+        tuiTab
+        (click)="onClick('teacher')"
+    >
+      На преподавателей
+    </button>
+  </tui-tabs>
+  <tui-accordion
+      [closeOthers]="false"
+      class="container accordion-container"
+  >
+    <tui-accordion-item
+        [disabled]="true"
+        [showArrow]="false"
+        [disableHover]="true"
+    >
+      <tui-input
+          tuiTextfieldIconLeft="tuiIconSearchLarge"
+          [(ngModel)]="search"
+      >
+        Поиск предмета
+      </tui-input>
+    </tui-accordion-item>
+    <tui-accordion-item>
+      Taiga UI cdk
+      <ng-template tuiAccordionItemContent>
+        <tui-accordion class="">
+        <tui-accordion-item
+            [borders]="null"
+            [disabled]="true"
+            [disableHover]="true"
+            [showArrow]="false" >
+          <a
+              tuiLink
+              routerLink="/main"
+          >Автоматизация системы </a>
+          <div class="rating-block">
+            <div>
+              Скорость прохождения:
+              <tui-rating
+                  iconNormal="tuiIconStar"
+                  iconFilled="tuiIconStar"
+                  class="rating"
+                  [readOnly]="true"
+                  [(ngModel)]="rateValue"
+              ></tui-rating>
+            </div>
+            <div>
+              Доступность:
+              <tui-rating
+                  iconNormal="tuiIconStar"
+                  iconFilled="tuiIconStar"
+                  class="rating"
+                  [readOnly]="true"
+                  [(ngModel)]="rateValue"
+              ></tui-rating>
+            </div>
+            <div>
+              Общая оценка:
+              <tui-rating
+                  iconNormal="tuiIconStar"
+                  iconFilled="tuiIconStar"
+                  class="rating"
+                  [readOnly]="true"
+                  [(ngModel)]="rateValue"
+              ></tui-rating>
+            </div>
+          </div>
+        </tui-accordion-item>
+        </tui-accordion>
+      </ng-template>
+    </tui-accordion-item>
+    <tui-accordion-item>
+      Taiga UI core
+      <ng-template tuiAccordionItemContent>
+        <div #content>
+          Basic elements needed to develop components, directives and more using Taiga UI design system
+        </div>
+      </ng-template>
+    </tui-accordion-item>
+    <tui-accordion-item>
+      Taiga UI kit
+      <ng-template tuiAccordionItemContent>
+        The main set of components used to build Taiga UI based Angular applications
+      </ng-template>
+    </tui-accordion-item>
+  </tui-accordion>
+</div>
