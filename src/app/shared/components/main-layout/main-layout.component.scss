@@ -1,0 +1,56 @@
+header {
+  box-shadow: 0 0.125rem 1rem #00000014;
+  position: fixed;
+  height: 64px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: var(--tui-base-01);
+  border-bottom: 1px solid var(--tui-base-03);
+}
+
+.topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 20px;
+}
+
+.logo {
+  margin-bottom: 4px;
+}
+
+span {
+  color: var(--tui-primary);
+}
+
+.sidenav {
+  position: fixed;
+  height: 100%;
+  width: 16.25rem;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: var(--tui-base-01);
+  border-right: 1px solid var(--tui-base-03);
+  overflow-x: hidden;
+  padding-top: 30px;
+  margin-top: 64px;
+  font: var(--tui-font-text-l);
+}
+
+.sidenav a {
+  display: block;
+  margin-bottom: 16px;
+  margin-left: 20px;
+}
+
+
+.router-wrapper {
+  margin-left: 260px;
+}
+
+a {
+  --tui-link: --tui-text-01
+}
