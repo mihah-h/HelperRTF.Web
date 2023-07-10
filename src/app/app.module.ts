@@ -6,10 +6,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
+import { CourseReviewsPageComponent } from './course-reviews-page/course-reviews-page.component';
+import { TeacherReviewsPageComponent } from './teacher-reviews-page/teacher-reviews-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainLayoutComponent,
+    CourseReviewsPageComponent,
+    TeacherReviewsPageComponent
   ],
   imports: [
     BrowserModule,
