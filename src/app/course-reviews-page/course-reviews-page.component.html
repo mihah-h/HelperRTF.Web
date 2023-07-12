@@ -1,20 +1,21 @@
-<div class="wrapper">
+<div *ngIf="subjects; else loading">
   <h1>Отзывы</h1>
   <tui-tabs [(activeItemIndex)]="activeItemIndex">
     <button
         tuiTab
-        (click)="onClick('courses')"
+        (click)="changeTab('courses')"
     >
       На курсы
     </button>
     <button
         tuiTab
-        (click)="onClick('teacher')"
+        (click)="changeTab('teacher')"
     >
       На преподавателей
     </button>
   </tui-tabs>
   <tui-accordion
+      *ngIf="activeItemIndex === 0"
       [closeOthers]="false"
       class="container accordion-container"
   >
@@ -25,73 +26,75 @@
     >
       <tui-input
           tuiTextfieldIconLeft="tuiIconSearchLarge"
-          [(ngModel)]="search"
+          [(ngModel)]="searchParameter"
       >
-        Поиск предмета
+        Поиск
       </tui-input>
     </tui-accordion-item>
-    <tui-accordion-item>
-      Taiga UI cdk
+
+    <tui-accordion-item
+      *ngFor="let subject of subjects | searchSubjects:searchParameter"
+      [tuiHighlight]="searchParameter"
+      [tuiHighlightColor]="'var(--tui-primary)'"
+    >
+      {{subject.name}} ({{subject.semester}} семестр)
       <ng-template tuiAccordionItemContent>
-        <tui-accordion class="">
-        <tui-accordion-item
-            [borders]="null"
-            [disabled]="true"
-            [disableHover]="true"
-            [showArrow]="false" >
-          <a
-              tuiLink
-              routerLink="/main"
-          >Автоматизация системы </a>
-          <div class="rating-block">
-            <div>
-              Скорость прохождения:
-              <tui-rating
-                  iconNormal="tuiIconStar"
-                  iconFilled="tuiIconStar"
-                  class="rating"
-                  [readOnly]="true"
-                  [(ngModel)]="rateValue"
-              ></tui-rating>
+        <tui-accordion>
+          <tui-accordion-item
+              *ngFor="let choiceSubject of subject.choice_subjects"
+              [borders]="null"
+              [disabled]="true"
+              [disableHover]="true"
+              [showArrow]="false" >
+            <a
+                tuiLink
+                routerLink="/main"
+            >
+                {{choiceSubject.name}} ({{choiceSubject.typeSubject}})
+            </a>
+            <div class="rating-block">
+              <div>
+                Скорость прохождения:
+                <tui-rating
+                    iconNormal="tuiIconStar"
+                    iconFilled="tuiIconStar"
+                    class="rating v"
+                    [readOnly]="true"
+                    [(ngModel)]="choiceSubject.speed_rating"
+                ></tui-rating>
+              </div>
+              <div>
+                Доступность:
+                <tui-rating
+                    iconNormal="tuiIconStar"
+                    iconFilled="tuiIconStar"
+                    class="rating"
+                    [readOnly]="true"
+                    [(ngModel)]="choiceSubject.understanding_rating"
+                ></tui-rating>
+              </div>
+              <div>
+                Общая оценка:
+                <tui-rating
+                    iconNormal="tuiIconStar"
+                    iconFilled="tuiIconStar"
+                    class="rating"
+                    [readOnly]="true"
+                    [(ngModel)]="choiceSubject.overall_rating"
+                ></tui-rating>
+              </div>
             </div>
-            <div>
-              Доступность:
-              <tui-rating
-                  iconNormal="tuiIconStar"
-                  iconFilled="tuiIconStar"
-                  class="rating"
-                  [readOnly]="true"
-                  [(ngModel)]="rateValue"
-              ></tui-rating>
-            </div>
-            <div>
-              Общая оценка:
-              <tui-rating
-                  iconNormal="tuiIconStar"
-                  iconFilled="tuiIconStar"
-                  class="rating"
-                  [readOnly]="true"
-                  [(ngModel)]="rateValue"
-              ></tui-rating>
-            </div>
-          </div>
-        </tui-accordion-item>
+          </tui-accordion-item>
         </tui-accordion>
-      </ng-template>
-    </tui-accordion-item>
-    <tui-accordion-item>
-      Taiga UI core
-      <ng-template tuiAccordionItemContent>
-        <div #content>
-          Basic elements needed to develop components, directives and more using Taiga UI design system
-        </div>
-      </ng-template>
-    </tui-accordion-item>
-    <tui-accordion-item>
-      Taiga UI kit
-      <ng-template tuiAccordionItemContent>
-        The main set of components used to build Taiga UI based Angular applications
       </ng-template>
     </tui-accordion-item>
   </tui-accordion>
 </div>
+<ng-template #loading>
+  <tui-loader
+      class="inline-flex tui-space_right-2 loading"
+      [showLoader]="true"
+      [inheritColor]="true"
+      size="xl"
+  ></tui-loader>
+</ng-template>

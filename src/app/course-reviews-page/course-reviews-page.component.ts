@@ -1,22 +1,42 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {SubjectsApiService} from "../shared/services/subjects-api.service";
+import {Subscription} from "rxjs";
+import {Subject} from "../shared/interfaces/subject/subject";
 
 @Component({
   selector: 'app-course-reviews-page',
   templateUrl: './course-reviews-page.component.html',
   styleUrls: ['./course-reviews-page.component.scss']
 })
-export class CourseReviewsPageComponent {
-  search: string = ''
+export class CourseReviewsPageComponent implements OnInit, OnDestroy{
+  searchParameter: string = ''
   activeItemIndex = 0
-  rateValue = 4
 
-  onClick(name: string) {
+  subjects!: Subject[]
+
+  getSubjectsSub!: Subscription
+
+  constructor(
+    private subjectsApiService: SubjectsApiService
+  ) {}
+
+  ngOnInit(): void {
+    this.getSubjectsSub = this.subjectsApiService.getSubjects()
+      .subscribe(subjects => this.subjects = subjects)
+  }
+
+  ngOnDestroy(): void {
+    this.getSubjectsSub.unsubscribe()
+  }
+
+  changeTab(name: string) {
     if (name === 'courses') {
       this.activeItemIndex = 0
     }
     if (name === 'teacher') {
       this.activeItemIndex = 1
     }
+    console.log(this.subjects)
   }
 
 }

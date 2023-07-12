@@ -35,9 +35,7 @@ span {
   background: var(--tui-base-01);
   border-right: 1px solid var(--tui-base-03);
   overflow-x: hidden;
-  padding-top: 35px;
   margin-top: 64px;
-  font: var(--tui-font-heading-6);
 }
 
 .sidenav a {
@@ -52,6 +50,13 @@ span {
   margin-left: 260px;
 }
 
+.wrapper {
+  width: 86%;
+  margin: auto;
+  padding-top: 1.75rem;
+  padding-bottom: 2rem;
+}
+
 a {
-  --tui-link: --tui-text-01
+  color: var(--tui-text-01);
 }

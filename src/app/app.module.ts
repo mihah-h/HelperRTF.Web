@@ -5,7 +5,7 @@ import {
   TuiAlertModule,
   TUI_SANITIZER,
   TuiLinkModule,
-  TuiThemeNightModule, TuiModeModule, TuiTextfieldControllerModule
+  TuiThemeNightModule, TuiModeModule, TuiTextfieldControllerModule, TuiLoaderModule
 } from "@taiga-ui/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
@@ -17,36 +17,47 @@ import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { CourseReviewsPageComponent } from './course-reviews-page/course-reviews-page.component';
 import { TeacherReviewsPageComponent } from './teacher-reviews-page/teacher-reviews-page.component';
-import {TuiAccordionModule, TuiAvatarModule, TuiInputModule, TuiRatingModule, TuiTabsModule} from "@taiga-ui/kit";
+import {
+    TuiAccordionModule,
+    TuiAvatarModule,
+    TuiHighlightModule,
+    TuiInputModule,
+    TuiRatingModule,
+    TuiTabsModule
+} from "@taiga-ui/kit";
 import {HttpClientModule} from "@angular/common/http";
+import { SearchSubjectsPipe } from './shared/pipes/search-subjects.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainLayoutComponent,
     CourseReviewsPageComponent,
-    TeacherReviewsPageComponent
+    TeacherReviewsPageComponent,
+    SearchSubjectsPipe
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    TuiRootModule,
-    TuiDialogModule,
-    TuiAlertModule,
-    TuiLinkModule,
-    TuiThemeNightModule,
-    TuiModeModule,
-    TuiAvatarModule,
-    TuiAccordionModule,
-    TuiInputModule,
-    TuiTabsModule,
-    TuiTextfieldControllerModule,
-    TuiRatingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        TuiRootModule,
+        TuiDialogModule,
+        TuiAlertModule,
+        TuiLinkModule,
+        TuiThemeNightModule,
+        TuiModeModule,
+        TuiAvatarModule,
+        TuiAccordionModule,
+        TuiInputModule,
+        TuiTabsModule,
+        TuiTextfieldControllerModule,
+        TuiRatingModule,
+        TuiLoaderModule,
+        TuiHighlightModule
+    ],
   providers: [
     {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
     {provide: 'API_URL', useValue: 'http://127.0.0.1:8000/'},

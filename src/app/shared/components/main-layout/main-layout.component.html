@@ -16,15 +16,27 @@
   </div>
 </header>
 <nav class="sidenav">
-    <a
-        tuiLink
-        routerLink="/main"
-    >Отзывы</a>
-  <a
-      tuiLink
-      routerLink="/main/teacher-reviews"
-  >Ответы на вопросы</a>
+  <tui-accordion class="container" [rounded]="false">
+    <tui-accordion-item
+        [borders]="null"
+        [showArrow]="false"
+        [disabled]="true"
+        [routerLink]="['/main']"
+    >
+      Отзывы
+    </tui-accordion-item>
+    <tui-accordion-item
+        [borders]="null"
+        [showArrow]="false"
+        [disabled]="true"
+        [routerLink]="['/main', 'teacher-reviews']"
+    >
+      Ответы на вопросы
+    </tui-accordion-item>
+  </tui-accordion>
 </nav>
 <div class="router-wrapper">
-  <router-outlet></router-outlet>
+  <div class="wrapper">
+    <router-outlet></router-outlet>
+  </div>
 </div>
