@@ -16,6 +16,15 @@ export interface ChoiceSubject {
   ],
   "speed_rating": number,
   "overall_rating": number,
-  "teacher": number,
-  "subject": number
+  subject: {
+    id: number,
+    name: string
+  },
+  teacher: {
+    id: number,
+    first_name: string,
+    second_name: string,
+    middle_name: string
+  },
+  teacherFullName: string
 }

@@ -2,6 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {Subject} from "../interfaces/subject/subject";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {ChoiceSubject} from "../interfaces/subject/choice-subject";
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,9 @@ export class SubjectsApiService {
 
   getSubjects(): Observable<Subject[]> {
     return this.http.get<Subject[]>(this.ApiUrl + 'api/subjects/')
+  }
+
+  getChoiceSubject(subjectId: string): Observable<ChoiceSubject> {
+    return this.http.get<ChoiceSubject>(this.ApiUrl + 'api/choise-subjects/' + subjectId)
   }
 }

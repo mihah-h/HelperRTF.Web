@@ -1,19 +1,19 @@
+<h1>Отзывы</h1>
+<tui-tabs [(activeItemIndex)]="activeItemIndex">
+  <button
+      tuiTab
+      (click)="changeTab('courses')"
+  >
+    На курсы
+  </button>
+  <button
+      tuiTab
+      (click)="changeTab('teacher')"
+  >
+    На преподавателей
+  </button>
+</tui-tabs>
 <div *ngIf="subjects; else loading">
-  <h1>Отзывы</h1>
-  <tui-tabs [(activeItemIndex)]="activeItemIndex">
-    <button
-        tuiTab
-        (click)="changeTab('courses')"
-    >
-      На курсы
-    </button>
-    <button
-        tuiTab
-        (click)="changeTab('teacher')"
-    >
-      На преподавателей
-    </button>
-  </tui-tabs>
   <tui-accordion
       *ngIf="activeItemIndex === 0"
       [closeOthers]="false"
@@ -45,30 +45,31 @@
               [borders]="null"
               [disabled]="true"
               [disableHover]="true"
-              [showArrow]="false" >
+              [showArrow]="false"
+          >
             <a
                 tuiLink
-                routerLink="/main"
+                [routerLink]="['/main', 'course']"
             >
-                {{choiceSubject.name}} ({{choiceSubject.typeSubject}})
+                {{choiceSubject.name}} ({{choiceSubject.typeSubject}},
+              {{choiceSubject.teacher.second_name}} {{choiceSubject.teacher.first_name[0]}}.
+              {{choiceSubject.teacher.middle_name[0]}}.)
             </a>
             <div class="rating-block">
-              <div>
+              <div class="rating">
                 Скорость прохождения:
                 <tui-rating
                     iconNormal="tuiIconStar"
                     iconFilled="tuiIconStar"
-                    class="rating v"
                     [readOnly]="true"
                     [(ngModel)]="choiceSubject.speed_rating"
                 ></tui-rating>
               </div>
-              <div>
+              <div class="rating">
                 Доступность:
                 <tui-rating
                     iconNormal="tuiIconStar"
                     iconFilled="tuiIconStar"
-                    class="rating"
                     [readOnly]="true"
                     [(ngModel)]="choiceSubject.understanding_rating"
                 ></tui-rating>
@@ -78,7 +79,6 @@
                 <tui-rating
                     iconNormal="tuiIconStar"
                     iconFilled="tuiIconStar"
-                    class="rating"
                     [readOnly]="true"
                     [(ngModel)]="choiceSubject.overall_rating"
                 ></tui-rating>
@@ -90,6 +90,7 @@
     </tui-accordion-item>
   </tui-accordion>
 </div>
+
 <ng-template #loading>
   <tui-loader
       class="inline-flex tui-space_right-2 loading"

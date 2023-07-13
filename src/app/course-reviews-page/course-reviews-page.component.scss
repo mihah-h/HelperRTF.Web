@@ -7,16 +7,19 @@ h1 {
 }
 
 .course-item {
-
   border: 1px solid var(--tui-base-03);
 }
 
 .rating-block {
   margin-top: 0.5rem;
   display: flex;
-  justify-content: space-between;
+  //justify-content: space-between;
   font: var(--tui-font-text-m-2);
   color: var(--tui-text-03);
+}
+
+.rating {
+  margin-right: 2rem;
 }
 
 a {
@@ -24,5 +27,5 @@ a {
 }
 
 .loading {
-  margin-top: 16.5rem;
+  margin-top: 14rem;
 }

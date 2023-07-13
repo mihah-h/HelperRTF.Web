@@ -1,0 +1,90 @@
+h1 {
+  font: var(--tui-font-heading-5);
+}
+
+h2 {
+  font: var(--tui-font-heading-6);
+  margin-bottom: 0.75rem;
+  margin-top: 2rem;
+}
+
+p {
+  display: flex;
+}
+
+.description-wrapper {
+  position: relative;
+  margin-top: 1.5rem;
+  border: 1px solid var(--tui-base-03);
+  border-radius: var(--tui-radius-m);
+  box-shadow: 0 0.125rem 0.1875rem #0000001a;
+  padding: 1.25rem;
+  font: var(--tui-font-text-m);
+}
+
+.reviews-wrapper {
+  position: relative;
+  margin-top: 1.5rem;
+  border: 1px solid var(--tui-base-03);
+  border-radius: var(--tui-radius-m);
+  box-shadow: 0 0.125rem 0.1875rem #0000001a;
+  font: var(--tui-font-text-m);
+  padding: 0.25rem 1.5rem 1.25rem 1.25rem ;
+}
+
+.review-wrapper {
+  position: relative;
+  margin-top: 1rem;
+  border: 1px solid var(--tui-base-03);
+  border-radius: var(--tui-radius-m);
+  box-shadow: 0 0.125rem 0.1875rem #0000001a;
+  font: var(--tui-font-text-m);
+
+}
+
+.rating-block {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--tui-base-03);
+  box-shadow: 0 0.125rem 0.1875rem #0000001a;
+}
+
+.block {
+  display: flex;
+  font: var(--tui-font-text-m-2);
+  color: var(--tui-text-03);
+}
+
+.top {
+  margin-top: 2rem;
+}
+
+.right {
+  margin-right: 2rem;
+}
+
+.reviews {
+  margin-top: 1.75rem;
+}
+
+.text-area {
+  min-height: 56px;
+  margin: 0.75rem 1.25rem;;
+}
+
+.button-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+button {
+  margin-bottom: 0.75rem;
+  margin-right: 1.25rem;
+}
+
+.review-text {
+  margin: 0.75rem 1.25rem;;
+}
+
+a {
+  color: var(--tui-text-03)
+}

@@ -36,7 +36,6 @@ export class CourseReviewsPageComponent implements OnInit, OnDestroy{
     if (name === 'teacher') {
       this.activeItemIndex = 1
     }
-    console.log(this.subjects)
   }
 
 }
