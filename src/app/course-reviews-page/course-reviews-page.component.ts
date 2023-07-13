@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SubjectsApiService} from "../shared/services/subjects-api.service";
 import {Subscription} from "rxjs";
 import {Subject} from "../shared/interfaces/subject/subject";
+import {AuthApiService} from "../shared/services/auth-api.service";
 
 @Component({
   selector: 'app-course-reviews-page',
@@ -17,7 +18,8 @@ export class CourseReviewsPageComponent implements OnInit, OnDestroy{
   getSubjectsSub!: Subscription
 
   constructor(
-    private subjectsApiService: SubjectsApiService
+    private subjectsApiService: SubjectsApiService,
+    public apiService: AuthApiService
   ) {}
 
   ngOnInit(): void {
@@ -37,5 +39,7 @@ export class CourseReviewsPageComponent implements OnInit, OnDestroy{
       this.activeItemIndex = 1
     }
   }
+
+
 
 }
