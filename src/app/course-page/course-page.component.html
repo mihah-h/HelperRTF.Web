@@ -1,65 +1,29 @@
-<h1>Автоматизация системы позиционирования оборудования по нанесению покрытий</h1>
-<div class="description-wrapper">
-  <div class="block">
-    <span class="right">Предмет: Дискртеная математика</span>
-    <span class="right">Преподаватель:
-      <a
-        tuiLink
-        [routerLink]="['/main']"
-      >
-        Антонов Егор Владимирович
-      </a>
-    </span>
-    <span>Тип: Традиционный</span>
-  </div>
-  <h2>Описание</h2>
-  Образовательный результат\r\n\r\nСодержание практики:\r\n\r\nЗн
-    акомство с предметной областью и материалами Курса.\r\n\r\nВыполн
-    ение (доработка) контрольных заданий\r\n\r\nВыполнение (доработка) практических заданий\r\n\r\nВыполне
-  <div class="block top">
-    <div class="right">
-      Скорость прохождения:
-      <tui-rating
-        iconNormal="tuiIconStar"
-        iconFilled="tuiIconStar"
-        class="rating "
-        [readOnly]="true"
-        [(ngModel)]="p"
-      ></tui-rating>
+<div *ngIf="choiceSubject; else loading">
+  <h1>{{choiceSubject.name}}</h1>
+  <div class="description-wrapper">
+    <div class="block">
+      <span class="right">Предмет: {{choiceSubject.subject.name}}</span>
+      <span class="right">Преподаватель:
+        <a
+          tuiLink
+          [routerLink]="['/main']"
+        >
+          {{choiceSubject.teacherFullName}}
+        </a>
+      </span>
+      <span>Тип: {{choiceSubject.typeSubject}}</span>
     </div>
-    <div class="right">
-      Доступность:
-      <tui-rating
-        iconNormal="tuiIconStar"
-        iconFilled="tuiIconStar"
-        class="rating"
-        [readOnly]="true"
-        [(ngModel)]="p"
-      ></tui-rating>
-    </div>
-    <div>
-      Общая оценка:
-      <tui-rating
-        iconNormal="tuiIconStar"
-        iconFilled="tuiIconStar"
-        class="rating"
-        [readOnly]="true"
-        [(ngModel)]="p"
-      ></tui-rating>
-    </div>
-  </div>
-</div>
-<h1 class="reviews">Отзывы</h1>
-<div class="reviews-wrapper">
-  <div class="review-wrapper">
-    <div class="block rating-block">
+    <h2>Описание</h2>
+    {{choiceSubject.description}}
+    <div class="block top">
       <div class="right">
         Скорость прохождения:
         <tui-rating
           iconNormal="tuiIconStar"
           iconFilled="tuiIconStar"
           class="rating "
-          [(ngModel)]="p"
+          [readOnly]="true"
+          [(ngModel)]="choiceSubject.speed_rating"
         ></tui-rating>
       </div>
       <div class="right">
@@ -68,7 +32,8 @@
           iconNormal="tuiIconStar"
           iconFilled="tuiIconStar"
           class="rating"
-          [(ngModel)]="p"
+          [readOnly]="true"
+          [(ngModel)]="choiceSubject.understanding_rating"
         ></tui-rating>
       </div>
       <div>
@@ -77,61 +42,110 @@
           iconNormal="tuiIconStar"
           iconFilled="tuiIconStar"
           class="rating"
-          [(ngModel)]="p"
+          [readOnly]="true"
+          [(ngModel)]="choiceSubject.overall_rating"
         ></tui-rating>
       </div>
-    </div>
-    <tui-text-area
-      class="text-area"
-      formControlName="testValue2"
-      [expandable]="true"
-    >
-      Введите отзыв
-    </tui-text-area>
-    <div class="button-wrapper">
-      <button
-        tuiButton
-        type="button"
-        size="m"
-        appearance="primary"
-        class="tui-space_right-3 tui-space_bottom-3"
-      >
-        Оставить отзыв
-      </button>
     </div>
   </div>
-  <div class="review-wrapper">
-    <div class="block rating-block">
-      <div class="right">
-        Скорость прохождения:
-        <tui-rating
-          iconNormal="tuiIconStar"
-          iconFilled="tuiIconStar"
-          class="rating "
-          [(ngModel)]="p"
-        ></tui-rating>
+  <h1 class="reviews">Отзывы</h1>
+  <div class="reviews-wrapper">
+    <div class="review-wrapper">
+      <div class="block rating-block">
+        <div class="right">
+          Скорость прохождения:
+          <tui-rating
+            iconNormal="tuiIconStar"
+            iconFilled="tuiIconStar"
+            class="rating "
+            [(ngModel)]="speed_rating"
+          ></tui-rating>
+        </div>
+        <div class="right">
+          Доступность:
+          <tui-rating
+            iconNormal="tuiIconStar"
+            iconFilled="tuiIconStar"
+            class="rating"
+            [(ngModel)]="understanding_rating"
+          ></tui-rating>
+        </div>
+        <div>
+          Общая оценка:
+          <tui-rating
+            iconNormal="tuiIconStar"
+            iconFilled="tuiIconStar"
+            class="rating"
+            [(ngModel)]="overall_rating"
+          ></tui-rating>
+        </div>
       </div>
-      <div class="right">
-        Доступность:
-        <tui-rating
-          iconNormal="tuiIconStar"
-          iconFilled="tuiIconStar"
-          class="rating"
-          [(ngModel)]="p"
-        ></tui-rating>
-      </div>
-      <div>
-        Общая оценка:
-        <tui-rating
-          iconNormal="tuiIconStar"
-          iconFilled="tuiIconStar"
-          class="rating"
-          [(ngModel)]="p"
-        ></tui-rating>
+      <tui-text-area
+        class="text-area"
+        [formControl]="text"
+        [expandable]="true"
+      >
+        Введите отзыв
+      </tui-text-area>
+      <div class="button-wrapper">
+        <button
+          tuiButton
+          type="button"
+          size="m"
+          appearance="primary"
+          [disabled]="checkInvalidFeedBacks()"
+          class="tui-space_right-3 tui-space_bottom-3"
+        >
+          Оставить отзыв
+        </button>
       </div>
     </div>
-    <div class="review-text">
-      Хороший курс, много полезной информации, достаточно легко закрывается, но препод говно))))))))))
+    <div
+      *ngFor="let feedback of choiceSubject.feedbacks"
+      class="review-wrapper">
+      <div class="block rating-block">
+        <div class="right">
+          Скорость прохождения:
+          <tui-rating
+            iconNormal="tuiIconStar"
+            iconFilled="tuiIconStar"
+            class="rating "
+            [(ngModel)]="feedback.speed_rating"
+          ></tui-rating>
+        </div>
+        <div class="right">
+          Доступность:
+          <tui-rating
+            iconNormal="tuiIconStar"
+            iconFilled="tuiIconStar"
+            class="rating"
+            [(ngModel)]="feedback.understanding_rating"
+          ></tui-rating>
+        </div>
+        <div>
+          Общая оценка:
+          <tui-rating
+            iconNormal="tuiIconStar"
+            iconFilled="tuiIconStar"
+            class="rating"
+            [(ngModel)]="feedback.overall_rating"
+          ></tui-rating>
+        </div>
+        <div>
+          {{feedback.date}}
+        </div>
+      </div>
+      <div class="review-text">
+        {{feedback.text}}
+      </div>
     </div>
   </div>
 </div>
+<ng-template #loading>
+  <tui-loader
+    class="inline-flex tui-space_right-2 loading"
+    [showLoader]="true"
+    [inheritColor]="true"
+    size="xl"
+  ></tui-loader>
+</ng-template>

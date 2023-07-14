@@ -76,6 +76,11 @@ p {
   flex-direction: row-reverse;
 }
 
+.button-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 button {
   margin-bottom: 0.75rem;
   margin-right: 1.25rem;
@@ -87,4 +92,8 @@ button {
 
 a {
   color: var(--tui-text-03)
+}
+
+.loading {
+  margin-top: 16.5rem;
 }

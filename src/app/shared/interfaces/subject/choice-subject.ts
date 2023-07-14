@@ -1,4 +1,5 @@
 export interface ChoiceSubject {
+  id: number,
   name: string,
   description: string,
   typeSubject: string,

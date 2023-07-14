@@ -5,11 +5,11 @@ import {Subject} from "../shared/interfaces/subject/subject";
 import {AuthApiService} from "../shared/services/auth-api.service";
 
 @Component({
-  selector: 'app-course-reviews-page',
-  templateUrl: './course-reviews-page.component.html',
-  styleUrls: ['./course-reviews-page.component.scss']
+  selector: 'app-reviews-page',
+  templateUrl: './reviews-page.component.html',
+  styleUrls: ['./reviews-page.component.scss']
 })
-export class CourseReviewsPageComponent implements OnInit, OnDestroy{
+export class ReviewsPageComponent implements OnInit, OnDestroy{
   searchParameter: string = ''
   activeItemIndex = 0
 
@@ -19,7 +19,7 @@ export class CourseReviewsPageComponent implements OnInit, OnDestroy{
 
   constructor(
     private subjectsApiService: SubjectsApiService,
-    public apiService: AuthApiService
+    public auth: AuthApiService
   ) {}
 
   ngOnInit(): void {

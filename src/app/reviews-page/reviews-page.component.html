@@ -49,7 +49,7 @@
           >
             <a
                 tuiLink
-                [routerLink]="['/main', 'course']"
+                [routerLink]="['/main', 'course', choiceSubject.id]"
             >
                 {{choiceSubject.name}} ({{choiceSubject.typeSubject}},
               {{choiceSubject.teacher.second_name}} {{choiceSubject.teacher.first_name[0]}}.

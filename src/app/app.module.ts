@@ -11,7 +11,7 @@ import {
   TuiLoaderModule,
   TuiButtonModule,
   TuiHintModule,
-  TuiErrorModule
+  TuiErrorModule, TuiDataListModule, TuiHostedDropdownModule
 } from "@taiga-ui/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
@@ -22,8 +22,7 @@ import {TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
-import { CourseReviewsPageComponent } from './course-reviews-page/course-reviews-page.component';
-import { TeacherReviewsPageComponent } from './teacher-reviews-page/teacher-reviews-page.component';
+import { ReviewsPageComponent } from './reviews-page/reviews-page.component';
 import {
   TuiAccordionModule,
   TuiAvatarModule, TuiElasticContainerModule, TuiFieldErrorPipeModule,
@@ -42,8 +41,7 @@ import {of} from "rxjs";
   declarations: [
     AppComponent,
     MainLayoutComponent,
-    CourseReviewsPageComponent,
-    TeacherReviewsPageComponent,
+    ReviewsPageComponent,
     SearchSubjectsPipe,
     CoursePageComponent,
     AuthPageComponent
@@ -75,7 +73,9 @@ import {of} from "rxjs";
     TuiHintModule,
     TuiErrorModule,
     TuiFieldErrorPipeModule,
-    TuiInputPasswordModule
+    TuiInputPasswordModule,
+    TuiDataListModule,
+    TuiHostedDropdownModule
   ],
   providers: [
     {

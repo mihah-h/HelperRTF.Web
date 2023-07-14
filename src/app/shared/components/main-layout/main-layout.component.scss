@@ -25,6 +25,10 @@ span {
   color: var(--tui-primary);
 }
 
+tui-avatar {
+  cursor: pointer;
+}
+
 .sidenav {
   position: fixed;
   height: 100%;

@@ -2,16 +2,67 @@
   <div>
     <nav class="topnav">
       <a
-          class="tui-text_h5 logo"
-          [routerLink]="['/main']"
+        class="tui-text_h5 logo"
+        [routerLink]="['/main']"
       >
         Helper <span>RTF</span>
       </a>
-      <tui-avatar
-          text="dmitriy demenskiy"
+      <tui-hosted-dropdown
+        *ngIf="auth.isAuthenticated(); else entrance"
+        tuiDropdownAlign="left"
+        [sided]="true"
+        [content]="dropdown"
+        [(open)]="openDropdown"
+      >
+        <tui-avatar
           size="s"
           [rounded]="true"
-      ></tui-avatar>
+        >
+          <button
+            tuiButton
+            type="button"
+            appearance="flat"
+            size="m"
+            [pseudoActive]="openDropdown || null"
+          ></button>
+        </tui-avatar>
+      </tui-hosted-dropdown>
+      <ng-template
+        #dropdown
+        let-close="close"
+      >
+        <tui-data-list>
+          <tui-opt-group>
+            <button
+              tuiOption
+              (click)="close()"
+            >
+              Светлая тема
+            </button>
+            <button
+              tuiOption
+              (click)="close()"
+            >
+              Темная тема
+            </button>
+          </tui-opt-group>
+          <tui-opt-group>
+            <button
+              tuiOption
+              (click)="logout()"
+            >
+              Выйти
+            </button>
+          </tui-opt-group>
+        </tui-data-list>
+      </ng-template>
+      <ng-template #entrance>
+        <a
+          tuiLink
+          icon="tuiIconLogInLarge"
+          [routerLink]="['/auth']"
+        ></a>
+      </ng-template>
     </nav>
   </div>
 </header>
