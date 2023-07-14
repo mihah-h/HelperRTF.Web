@@ -1,0 +1,112 @@
+<div class="wrapper">
+  <a
+    class="tui-text_h5 logo"
+    [routerLink]="['/main']"
+  >
+    Helper <span>RTF</span>
+  </a>
+  <tui-tabs
+    [(activeItemIndex)]="activeItemIndex"
+  >
+    <button
+      tuiTab
+      (click)="changeTab('login')"
+    >
+      Вход
+    </button>
+    <button
+      tuiTab
+
+      (click)="changeTab('registration')"
+    >
+      Регистрация
+    </button>
+  </tui-tabs>
+  <form
+    *ngIf="activeItemIndex === 0; else registration"
+    [formGroup]="loginForm"
+    (ngSubmit)="loginSubmit()"
+  >
+    <tui-input
+      class="input"
+      formControlName="emailLogin"
+    >
+      Email
+    </tui-input>
+    <tui-error
+      formControlName="emailLogin"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+    <tui-input-password
+      class="input"
+      formControlName="passwordLogin"
+    >
+      Пароль</tui-input-password>
+    <tui-error
+      formControlName="passwordLogin"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+    <div
+      class="right-wrapper input"
+    >
+      <button
+        tuiButton
+        size="m"
+        type="submit"
+        class="tui-form__button"
+        [disabled]="loginForm.invalid"
+      >
+        Войти
+      </button>
+    </div>
+  </form>
+  <ng-template #registration>
+    <form
+      [formGroup]="registrationForm"
+      (ngSubmit)="registerSubmit()"
+    >
+      <tui-input
+        class="input"
+        formControlName="name"
+      >
+        Имя
+      </tui-input>
+      <tui-error
+        formControlName="name"
+        [error]="[] | tuiFieldError | async"
+      ></tui-error>
+      <tui-input
+        class="input"
+        formControlName="emailRegister"
+      >
+        Email
+      </tui-input>
+      <tui-error
+        formControlName="emailRegister"
+        [error]="[] | tuiFieldError | async"
+      ></tui-error>
+      <tui-input-password
+        class="input"
+        formControlName="passwordRegister"
+      >
+        Пароль</tui-input-password>
+      <tui-error
+        formControlName="passwordRegister"
+        [error]="[] | tuiFieldError | async"
+      ></tui-error>
+      <div
+        class="right-wrapper input"
+      >
+        <button
+          tuiButton
+          size="m"
+          type="submit"
+          class="tui-form__button"
+          [disabled]="registrationForm.invalid"
+        >
+          Зарегисрироваться
+        </button>
+      </div>
+    </form>
+  </ng-template>
+</div>

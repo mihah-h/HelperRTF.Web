@@ -21,4 +21,8 @@ export class SubjectsApiService {
   getChoiceSubject(subjectId: string): Observable<ChoiceSubject> {
     return this.http.get<ChoiceSubject>(this.ApiUrl + 'api/choise-subjects/' + subjectId)
   }
+
+  postChoiceSubjectFeedbacks(choiceSubjectFeedbacks) {
+    return this.http.post(this.ApiUrl + 'api/choise-subjects/feedbacks/', choiceSubjectFeedbacks)
+  }
 }
